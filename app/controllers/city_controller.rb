@@ -3,6 +3,10 @@ class CityController < ApplicationController
     @cities = City.all
   end
 
+  def done_index
+    @cities = City.all
+  end
+
   def sorting
     @cities = City.sorting_all(params[:sorting_params])
 
@@ -10,5 +14,11 @@ class CityController < ApplicationController
     respond_to do |format|
       format.js
     end
+  end
+
+  def chart
+  end
+
+  def done_chart
   end
 end
