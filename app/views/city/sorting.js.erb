@@ -1,0 +1,3 @@
+$('#city_list').fadeOut('fast');
+$('#city_list').html('<%= j(render partial: 'city_list', locals: {cities: @cities}) %>');
+$('#city_list').fadeIn('fast');
