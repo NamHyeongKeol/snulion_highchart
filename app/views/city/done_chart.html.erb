@@ -1,0 +1,91 @@
+<div class="row wrapper">
+  <div class="col s12" style="margin-top: 100px">
+    <h1 class="center white-text">Chart로 보기</h1>
+    <div class="row">
+      <div class="col s12">
+        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var charting_params = [];
+  $( document ).ready(function() {
+    callChartingAPI(document);
+  });
+
+  function callChartingAPI(elem){
+    // manageChartingParams(elem.id);
+    $.ajax({
+      url: '<%= j(charting_city_path) %>',
+      method: 'post',
+      dataType: 'json',
+      data: {
+        charting_params: charting_params
+      },
+      success: function(data) {
+        Highcharts.chart('container', {
+          chart: {
+            type: 'column'
+          },
+          title: {
+            text: 'asdfasdf'
+          },
+          subtitle: {
+            text: 'zxcvzxcv'
+          },
+          xAxis: {
+            type: 'category'
+          },
+          yAxis: {
+            min: 0,
+            title: {
+              text: 'qwerqwer'
+            }
+          },
+          legend: {
+            enabled: true
+          },
+          plotOptions: {
+            series: {
+              borderWidth: 0,
+              dataLabels: {
+                enabled: true,
+                format: '{point.y}'
+              }
+            }
+          },
+          tooltiip: {
+            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y}</b> of total<br/>'
+          },
+          series: data.series
+        });
+      },
+      error: function(data) {
+        console.log("error");
+      }
+    });
+  }
+
+  function manageChartingParams(new_arg) {
+    arg_list = sorting_params.map(function(obj) {
+      return obj.arg;
+    });
+    order_list = sorting_params.map(function(obj) {
+      return obj.order;
+    });
+    var idx = arg_list.indexOf(new_arg);
+    if (idx != -1) { // if exist
+      sorting_params.splice(idx, 1);
+      sorting_params.unshift({arg: new_arg, order: nextOrder(order_list[idx])})
+    } else {
+      sorting_params.unshift({arg: new_arg, order: 'asc'});
+    }
+  }
+
+  function nextOrder(current_order) {
+    return (current_order === 'asc') ? 'desc' : 'asc';
+  }
+</script>

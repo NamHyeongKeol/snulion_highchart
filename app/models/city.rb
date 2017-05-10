@@ -8,4 +8,17 @@ class City < ApplicationRecord
     end
     return cities
   end
+
+  def self.charting_all(charting_params)
+    data = {
+      series: [{
+        name: "City",
+        colorByPoint: true,
+        data: City.pluck(:name,:population)
+      }]
+    }
+    #charting_params.permit!
+    #charting_params = charting_params.to_h
+    return data
+  end
 end

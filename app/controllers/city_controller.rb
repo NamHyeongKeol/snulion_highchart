@@ -17,8 +17,19 @@ class CityController < ApplicationController
   end
 
   def chart
+    @data = City.charting_all(params[:charting_params])
   end
 
   def done_chart
+    @data = City.charting_all(params[:charting_params])
+  end
+
+  def charting
+    @data = City.charting_all(params[:charting_params])
+
+    # app/views/charting.html.erb가 없으면 없어도 되는 부분
+    respond_to do |format|
+      format.json
+    end
   end
 end
