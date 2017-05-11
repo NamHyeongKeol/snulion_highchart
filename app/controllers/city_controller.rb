@@ -17,11 +17,9 @@ class CityController < ApplicationController
   end
 
   def chart
-    @data = City.charting_all(params[:charting_params])
   end
 
   def done_chart
-    @data = City.charting_all(params[:charting_params])
   end
 
   def charting

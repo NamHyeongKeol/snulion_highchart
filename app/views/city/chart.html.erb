@@ -1,0 +1,71 @@
+<div class="row wrapper">
+  <div class="col s12" style="margin-top: 100px">
+    <h1 class="center white-text">Chart로 보기</h1>
+    <div class="row" style="font-weight: bold; margin-top: 70px">
+      <div class="col s12" id="xAxis">
+        <div class="col s2">
+          <p></p>
+        </div>
+        <div class="col s2">
+          <p style="font-weight: bold">독립변인</p>
+        </div>
+        <div class="col s2">
+          <p style="font-weight: bold" id="name" onclick="callChartingAPI(this)">NAME</p>
+        </div>
+        <div class="col s2">
+          <p style="font-weight: bold" id="country" onclick="callChartingAPI(this)">COUNTRY</p>
+        </div>
+        <div class="col s2">
+          <p style="font-weight: bold" id="continent" onclick="callChartingAPI(this)">CONTINENT</p>
+        </div>
+        <div class="col s2">
+        </div>
+      </div>
+      <div class="col s12" id="yAxis">
+        <div class="col s2">
+          <p></p>
+        </div>
+        <div class="col s2">
+          <p style="font-weight: bold">종속변인</p>
+        </div>
+        <div class="col s2">
+          <p style="font-weight: bold" id="population" onclick="callChartingAPI(this)">POPULATION</p>
+        </div>
+        <div class="col s2">
+          <p style="font-weight: bold" id="area" onclick="callChartingAPI(this)">AREA</p>
+        </div>
+        <div class="col s2">
+          <p style="font-weight: bold" id="density" onclick="callChartingAPI(this)">DENSITY</p>
+        </div>
+        <div class="col s2">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <div id="container-column" style="min-width: 310px; height: 400px; margin: 70px auto"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var charting_params = {x: "name", y: "population"};
+
+  $( document ).ready(function() {
+    callChartingAPI();
+  });
+
+  function callChartingAPI(elem){
+    manageChartingParams(elem);
+    $.ajax();
+  }
+
+  function manageChartingParams(elem = document.getElementById("name")) {
+    if (elem.parentNode.parentNode.id === "xAxis") {
+      charting_params["x"] = elem.id;
+    } else {
+      charting_params["y"] = elem.id;
+    }
+  }
+</script>
