@@ -1,7 +1,7 @@
 class City < ApplicationRecord
   def self.sorting_all(sorting_params)
     cities = City.all
-    sorting_params.permit!
+    sorting_params.permit! # 이건 뭔지 몰라도 됨
     sorting_params = sorting_params.to_h
     sorting_params.each do |p|
       cities = cities.order("#{p.last[:arg]} #{p.last[:order]}")
@@ -11,16 +11,15 @@ class City < ApplicationRecord
 
   def self.charting_all(charting_params)
     data = {
-      title: charting_params[:x] + "에 대한 " + charting_params[:y],
+      title: "#{charting_params[:x]}에 대한 #{charting_params[:y]}",
       subtitle: "Column Chart",
-      yAxis: charting_params[:y],
+      yAxis: "#{charting_params[:y]}",
       series: [{
-        name: charting_params[:x],
+        name: "#{charting_params[:x]}",
         colorByPoint: true,
         data: making_data(charting_params)
       }]
     }
-
     return data
   end
 
