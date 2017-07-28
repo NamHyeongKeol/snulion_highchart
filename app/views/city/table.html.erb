@@ -1,0 +1,24 @@
+<div class="row wrapper">
+  <div class="col s12" style="margin-top: 100px">
+    <h1 class="center white-text">Table로 보기</h1>
+    <div class="row">
+      <div class="col s12">
+        <table>
+          <thead>
+            <tr>
+              <th id="name">NAME</th>
+              <th id="population">POPULATION</th>
+              <th id="area">AREA(km^2)</th>
+              <th id="density">DENSITY(/km^2)</th>
+              <th id="country">COUNTRY</th>
+              <th id="continent">CONTINENT</th>
+            </tr>
+          </thead>
+          <tbody id="city_list">
+            <%= render partial: 'city_list', locals: {cities: @cities} %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

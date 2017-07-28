@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'city#index'
-  get 'city/done_index', as: :done_table
+  get 'city/table', as: :table
+  get 'city/done_table', as: :done_table
   post 'city/sorting', as: :sorting_city
   get 'city/chart', as: :chart
   get 'city/done_chart', as: :done_chart

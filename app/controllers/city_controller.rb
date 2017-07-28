@@ -1,9 +1,12 @@
 class CityController < ApplicationController
   def index
+  end
+
+  def table
     @cities = City.all
   end
 
-  def done_index
+  def done_table
     @cities = City.all
   end
 
