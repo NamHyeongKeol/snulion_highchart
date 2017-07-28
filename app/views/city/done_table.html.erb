@@ -28,7 +28,7 @@
   function callSortingAPI(elem){
     manageSortingParams(elem.id);
     $.ajax({
-      url: '<%= j(sorting_city_path) %>',
+      url: '<%= sorting_city_path %>',
       method: 'post',
       data: {
         sorting_params: sorting_params

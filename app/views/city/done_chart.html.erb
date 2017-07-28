@@ -59,7 +59,7 @@
   function callChartingAPI(elem){
     manageChartingParams(elem);
     $.ajax({
-      url: '<%= j(charting_city_path) %>',
+      url: '<%= charting_city_path %>',
       method: 'post',
       dataType: 'json',
       data: {
