@@ -97,9 +97,9 @@
               }
             }
           },
-          tooltiip: {
-            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y}</b><br/>'
+          tooltip: {
+            headerFormat: '<span style="font-size:11px">{point.key}</span><br>',
+            pointFormat: '<span style="color:{point.color}">{series.name}</span>: <b>{point.y}</b><br/>'
           },
           series: data.series
         });

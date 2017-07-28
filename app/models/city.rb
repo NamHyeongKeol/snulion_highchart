@@ -17,7 +17,7 @@ class City < ApplicationRecord
       series: [{
         name: "#{charting_params[:x]}",
         colorByPoint: true,
-        data: making_data(charting_params)
+        data: making_data(charting_params) # [["아시아", 8246.82926829268], ["북아메리카", 6788.5], ... ]
       }]
     }
     return data
